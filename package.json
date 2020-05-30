@@ -4,8 +4,14 @@
   "description": "{{description}}",
   "private": true,
   "dependencies": {
+    "@types/chalk": "^2.2.0",
+    "chalk": "^4.0.0",
+    "egg-scripts": "^2.10.0",
     "midway": "^1.0.0",
-    "egg-scripts": "^2.10.0"
+    "reflect-metadata": "^0.1.13",
+    "typedi": "^0.8.0",
+    "typeorm": "^0.2.25",
+    "typeorm-typedi-extensions": "^0.2.3"
   },
   "devDependencies": {
     "@types/mocha": "^5.2.7",
