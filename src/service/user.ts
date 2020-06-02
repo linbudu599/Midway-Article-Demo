@@ -1,15 +1,15 @@
-import { provide } from 'midway';
-import { IUserService, IUserOptions, IUserResult } from '../interface';
+import { provide } from "midway";
+// , IUserOptions, IUserResult
+import { IUserService } from "../interface";
 
-@provide('userService')
+@provide("userService")
 export class UserService implements IUserService {
-
-  async getUser(options: IUserOptions): Promise<IUserResult> {
+  async getUser(): Promise<any> {
     return {
-      id: options.id,
-      username: 'mockedName',
-      phone: '12345678901',
-      email: 'xxx.xxx@xxx.com',
+      id: 1,
+      username: "mockedName",
+      phone: "12345678901",
+      email: "xxx.xxx@xxx.com",
     };
   }
 }

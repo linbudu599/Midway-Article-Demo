@@ -12,7 +12,7 @@
     "noUnusedLocals": true,
     "stripInternal": true,
     "pretty": true,
-    "types": ["jest"],
+    // "types": ["jest"],
     "declaration": true,
     "outDir": "dist"
   },
