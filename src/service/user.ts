@@ -1,15 +1,20 @@
 import { provide } from "midway";
-// , IUserOptions, IUserResult
-import { IUserService } from "../interface";
+import { Connection, getConnection } from "typeorm";
+import { User } from "../entity/user";
+import { IUserService, IUser } from "../interface";
 
 @provide("userService")
 export class UserService implements IUserService {
-  async getUser(): Promise<any> {
-    return {
-      id: 1,
-      username: "mockedName",
-      phone: "12345678901",
-      email: "xxx.xxx@xxx.com",
-    };
+  connection: Connection;
+
+  constructor() {
+    // @InjectRepository(User) private readonly userRepository: Repository<User>
+    this.connection = getConnection();
+  }
+
+  async getUser(): Promise<IUser[] | null> {
+    console.log("===getUser Service Invoked===");
+    const result = await this.connection.manager.find(User);
+    return result;
   }
 }

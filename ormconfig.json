@@ -2,6 +2,7 @@
   "type": "sqlite",
   "database": "./test.db",
   "synchronize": true,
-  "logging": true,
+  "dropSchema": true,
+  "logging": "advanced-console",
   "entities": ["src/entity/**/*.ts"]
 }

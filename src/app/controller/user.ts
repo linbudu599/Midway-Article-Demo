@@ -1,5 +1,6 @@
 import { Context, controller, get, inject, provide } from "midway";
 import { IUserService } from "../../interface";
+import { responseGener } from "../../util";
 
 @provide()
 @controller("/user")
@@ -10,11 +11,9 @@ export class UserController {
   @inject("userService")
   service: IUserService;
 
-  @get("/:id")
+  @get("/users")
   async getUser(): Promise<void> {
-    // const id: number = this.ctx.params.id;
-    // const user: IUserResult = await this.service.getUser({id});
-    const user: any = await this.service.getUser();
-    this.ctx.body = { success: true, message: "OK", data: user };
+    const res = await this.service.getUser();
+    this.ctx.body = responseGener(res, "Fetch User Info Successfully");
   }
 }

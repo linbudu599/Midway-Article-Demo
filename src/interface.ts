@@ -1,9 +1,6 @@
 // import { InsertResult, DeleteResult } from "typeorm";
 // import { User } from "./entity/user";
 
-/**
- * @description User-Service response
- */
 export interface IUTMock {
   id: number;
   username: string;
@@ -11,12 +8,9 @@ export interface IUTMock {
   email?: string;
 }
 
-/**
- * @description User-Service abstractions
- */
 export interface IUserService {
   // getUser(): Promise<IUser[]>;
-  getUser(): Promise<any>;
+  getUser(): Promise<IUser[] | null>;
   // insertUser(): Promise<InsertResult>;
   // searchUser(conditions: searchConditions): Promise<User[]>;
   // deleteUser(uid: number): Promise<DeleteResult>;
@@ -24,6 +18,7 @@ export interface IUserService {
   // uTMockService(id: number): Promise<IUTMock>;
 }
 export type searchConditions = Partial<IUser>;
+
 export interface IUser {
   uid?: number;
   name: string;
