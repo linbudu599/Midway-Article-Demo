@@ -1,6 +1,15 @@
-import { app } from "midway-mock/bootstrap";
+import { app, mm } from "midway-mock/bootstrap";
 
 describe("test/controller/home.test.ts", () => {
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+
+  beforeAll(() => {
+    let appInstance = mm.app();
+    return appInstance.ready();
+  });
+
   it("should get untest test config", () => {
     expect(app.config.a).toBe(1);
   });

@@ -1,4 +1,4 @@
-import { InsertResult, DeleteResult } from "typeorm";
+import { InsertResult, DeleteResult } from 'typeorm';
 // import { User } from "./entity/user";
 
 export interface IUTMock {
