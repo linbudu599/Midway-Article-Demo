@@ -23,4 +23,10 @@ export class UserService implements IUserService {
     const result = await this.connection.manager.insert(User, { ...user });
     return result;
   }
+
+  async findUserByUid(uid: string): Promise<unknown> {
+    console.log("=== findUserByUid Service Invoked ===");
+    const result = await this.connection.manager.findOne(User, uid);
+    return result;
+  }
 }

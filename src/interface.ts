@@ -11,6 +11,8 @@ export interface IUTMock {
 export interface IUserService {
   getAllUsers(): Promise<IUser[] | null>;
   createUser(user: IUser): Promise<InsertResult>;
+  // FIXME: remove unknown
+  findUserByUid(uid: string): Promise<unknown>;
   // insertUser(): Promise<InsertResult>;
   // searchUser(conditions: searchConditions): Promise<User[]>;
   // deleteUser(uid: number): Promise<DeleteResult>;
