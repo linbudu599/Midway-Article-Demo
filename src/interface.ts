@@ -13,11 +13,10 @@ export interface IUserService {
   createUser(user: IUser): Promise<InsertResult>;
   // FIXME: remove unknown
   findUserByUid(uid: string): Promise<unknown>;
+  deleteUser(uid: string): Promise<DeleteResult>;
+  fillMockUser(): Promise<InsertResult>;
   // insertUser(): Promise<InsertResult>;
   // searchUser(conditions: searchConditions): Promise<User[]>;
-  // deleteUser(uid: number): Promise<DeleteResult>;
-  // findByUid(uid: number): Promise<User>;
-  // uTMockService(id: number): Promise<IUTMock>;
 }
 export type searchConditions = Partial<IUser>;
 

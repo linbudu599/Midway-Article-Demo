@@ -6,6 +6,5 @@ export const initialData = (length: number): IUser[] => {
     name: 'linbudu',
     age: 21,
   };
-  console.log(arr.fill(mockData));
   return arr.fill(mockData);
 };

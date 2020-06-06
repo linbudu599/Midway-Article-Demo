@@ -1,4 +1,4 @@
-import { Context, controller, get, inject, provide, post } from "midway";
+import { Context, controller, get, inject, provide, post, del } from "midway";
 import { IUserService } from "../../interface";
 import { responseGener } from "../../util";
 
@@ -29,8 +29,21 @@ export class UserController {
     const {
       params: { uid },
     } = this.ctx;
-    console.log(this.ctx.params);
     const res = await this.service.findUserByUid(uid);
     this.ctx.body = responseGener(res, "Find User By UID Successfully");
+  }
+
+  @del("/uid/:uid")
+  async deleteUser(): Promise<void> {
+    const {
+      params: { uid },
+    } = this.ctx;
+    const res = await this.service.deleteUser(uid);
+    this.ctx.body = responseGener(res, "Delete User Successfully");
+  }
+
+  @get("/fillMockData")
+  async fillMockData(): Promise<void> {
+    
   }
 }

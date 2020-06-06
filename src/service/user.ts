@@ -1,6 +1,7 @@
 import { provide } from "midway";
-import { Connection, getConnection, InsertResult } from "typeorm";
+import { Connection, getConnection, InsertResult, DeleteResult } from "typeorm";
 import { User } from "../entity/user";
+import { initialData } from "../util/init";
 import { IUserService, IUser } from "../interface";
 
 @provide("userService")
@@ -27,6 +28,18 @@ export class UserService implements IUserService {
   async findUserByUid(uid: string): Promise<unknown> {
     console.log("=== findUserByUid Service Invoked ===");
     const result = await this.connection.manager.findOne(User, uid);
+    return result;
+  }
+
+  async deleteUser(uid: string): Promise<DeleteResult> {
+    console.log("=== deleteUser Service Invoked ===");
+    const result = await this.connection.manager.delete(User, uid);
+    return result;
+  }
+
+  async fillMockUser(): Promise<InsertResult> {
+    console.log("=== fillMockUser Service Invoked ===");
+    const result = await this.connection.manager.insert(User, initialData(5));
     return result;
   }
 }
