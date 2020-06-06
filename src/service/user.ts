@@ -1,5 +1,5 @@
 import { provide } from "midway";
-import { Connection, getConnection } from "typeorm";
+import { Connection, getConnection, InsertResult } from "typeorm";
 import { User } from "../entity/user";
 import { IUserService, IUser } from "../interface";
 
@@ -12,9 +12,15 @@ export class UserService implements IUserService {
     this.connection = getConnection();
   }
 
-  async getUser(): Promise<IUser[] | null> {
-    console.log("===getUser Service Invoked===");
+  async getAllUsers(): Promise<IUser[] | null> {
+    console.log("=== getAllUsers Service Invoked ===");
     const result = await this.connection.manager.find(User);
+    return result;
+  }
+
+  async createUser(user: IUser): Promise<InsertResult> {
+    console.log("=== createUser Service Invoked ===");
+    const result = await this.connection.manager.insert(User, { ...user });
     return result;
   }
 }

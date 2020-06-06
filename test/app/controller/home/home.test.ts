@@ -1,20 +1,17 @@
-/* tslint:disable */
-const { app, assert } = require("midway-mock/bootstrap");
-/* tslint:enable */
+import { app } from "midway-mock/bootstrap";
 
-describe("test/app/controller/home.test.ts", () => {
-  it("should assert", async () => {
-    const pkg = require("../../../package.json");
-    assert(app.config.keys.startsWith(pkg.name));
-    // const ctx = app.mockContext({});
-    // await ctx.service.xx();
+describe("test/controller/home.test.ts", () => {
+  it("should get untest test config", () => {
+    expect(app.config.a).toBe(1);
   });
 
-  it("should GET /", () => {
-    return app
-      .httpRequest()
-      .get("/")
-      .expect("Welcome to midwayjs!")
-      .expect(200);
-  });
+  // it("should GET /", () => {
+  //   return app
+  //     .httpRequest()
+  //     .get("/")
+  //     .set("Accept", "text/plain; charset=utf-8")
+  //     .expect("Content-Type", "text/plain; charset=utf-8")
+  //     .expect(200)
+  //     .expect("Welcome to midwayjs!");
+  // });
 });

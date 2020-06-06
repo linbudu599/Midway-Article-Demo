@@ -10,6 +10,8 @@ export default (appInfo: EggAppInfo) => {
 
   // add your config here
   // config.middleware = ["log"];
-
+  config.security = {
+    csrf: false,
+  };
   return config;
 };

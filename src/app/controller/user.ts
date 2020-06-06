@@ -1,4 +1,4 @@
-import { Context, controller, get, inject, provide } from "midway";
+import { Context, controller, get, inject, provide, post } from "midway";
 import { IUserService } from "../../interface";
 import { responseGener } from "../../util";
 
@@ -11,9 +11,16 @@ export class UserController {
   @inject("userService")
   service: IUserService;
 
-  @get("/users")
+  @get("/all")
   async getUser(): Promise<void> {
-    const res = await this.service.getUser();
+    const res = await this.service.getAllUsers();
     this.ctx.body = responseGener(res, "Fetch User Info Successfully");
+  }
+
+  @post("/create")
+  async createUser(): Promise<void> {
+    const { body } = this.ctx.request;
+    const res = this.service.createUser({ ...body });
+    this.ctx.body = responseGener(res, "Create User Successfully");
   }
 }
