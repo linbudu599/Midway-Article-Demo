@@ -2,7 +2,7 @@ import { provide } from 'midway';
 import { Connection, getConnection, InsertResult, DeleteResult } from 'typeorm';
 import { User } from '../entity/user';
 import { initialData } from '../util/init';
-import { IUserService, IUser } from '../interface';
+import { IUserService, IUser } from '../interface/user';
 
 @provide('userService')
 export class UserService implements IUserService {

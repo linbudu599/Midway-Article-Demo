@@ -1,4 +1,4 @@
-import { IUser } from '../interface';
+import { IUser } from '../interface/user';
 
 export const initialData = (length: number): IUser[] => {
   const arr = Array(length);

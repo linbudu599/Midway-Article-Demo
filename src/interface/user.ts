@@ -1,12 +1,4 @@
-import { InsertResult, DeleteResult } from 'typeorm';
-// import { User } from "./entity/user";
-
-export interface IUTMock {
-  id: number;
-  username: string;
-  phone: string;
-  email?: string;
-}
+import { InsertResult, DeleteResult } from "typeorm";
 
 export interface IUserService {
   getAllUsers(): Promise<IUser[] | null>;
@@ -15,9 +7,8 @@ export interface IUserService {
   findUserByUid(uid: string): Promise<unknown>;
   deleteUser(uid: string): Promise<DeleteResult>;
   fillMockUser(): Promise<InsertResult>;
-  // insertUser(): Promise<InsertResult>;
-  // searchUser(conditions: searchConditions): Promise<User[]>;
 }
+
 export type searchConditions = Partial<IUser>;
 
 export interface IUser {
