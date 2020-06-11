@@ -1,5 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
-import { IGame } from "../interface";
+import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { IGame } from '../interface';
 
 @Entity()
 export class Game implements IGame {

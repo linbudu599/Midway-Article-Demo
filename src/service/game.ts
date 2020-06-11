@@ -1,10 +1,10 @@
-import { provide } from "midway";
-import { Connection, getConnection, InsertResult, DeleteResult } from "typeorm";
-import { Game } from "../entity";
-import { mockGameData } from "../util";
-import { IGameService, IGame } from "../interface";
+import { provide } from 'midway';
+import { Connection, getConnection, InsertResult, DeleteResult } from 'typeorm';
+import { Game } from '../entity';
+import { mockGameData } from '../util';
+import { IGameService, IGame } from '../interface';
 
-@provide("gameService")
+@provide('gameService')
 export class GameService implements IGameService {
   connection: Connection;
 
@@ -17,12 +17,12 @@ export class GameService implements IGameService {
     return result;
   }
   getGameByGid(gdi: string): Promise<IGame> {
-    throw new Error("Method not implemented.");
+    throw new Error('Method not implemented.');
   }
   likeGame(gid: string): Promise<InsertResult> {
-    throw new Error("Method not implemented.");
+    throw new Error('Method not implemented.');
   }
   dislikeGame(gid: string): Promise<InsertResult> {
-    throw new Error("Method not implemented.");
+    throw new Error('Method not implemented.');
   }
 }

@@ -1,50 +1,50 @@
-import { Context, controller, get, inject, provide, post, del } from "midway";
-import { IUserService } from "../../interface";
-import { responseGener } from "../../util";
+import { Context, controller, get, inject, provide, post, del } from 'midway';
+import { IUserService } from '../../interface';
+import { responseGener } from '../../util';
 
 @provide()
-@controller("/user")
+@controller('/user')
 export class UserController {
   @inject()
   ctx: Context;
 
-  @inject("userService")
+  @inject('userService')
   service: IUserService;
 
-  @get("/all")
+  @get('/all')
   async getUser(): Promise<void> {
     const res = await this.service.getAllUsers();
-    this.ctx.body = responseGener(res, "Fetch User Info Successfully");
+    this.ctx.body = responseGener(res, 'Fetch User Info Successfully');
   }
 
-  @post("/create")
+  @post('/create')
   async createUser(): Promise<void> {
     const { body } = this.ctx.request;
     const res = await this.service.createUser({ ...body });
-    this.ctx.body = responseGener(res, "Create User Successfully");
+    this.ctx.body = responseGener(res, 'Create User Successfully');
   }
 
-  @get("/uid/:uid")
+  @get('/uid/:uid')
   async findUserByUid(): Promise<void> {
     const {
       params: { uid },
     } = this.ctx;
     const res = await this.service.findUserByUid(uid);
-    this.ctx.body = responseGener(res, "Find User By UID Successfully");
+    this.ctx.body = responseGener(res, 'Find User By UID Successfully');
   }
 
-  @del("/uid/:uid")
+  @del('/uid/:uid')
   async deleteUser(): Promise<void> {
     const {
       params: { uid },
     } = this.ctx;
     const res = await this.service.deleteUser(uid);
-    this.ctx.body = responseGener(res, "Delete User Successfully");
+    this.ctx.body = responseGener(res, 'Delete User Successfully');
   }
 
-  @get("/fillMockData")
+  @get('/fillMockData')
   async fillMockData(): Promise<void> {
     const res = await this.service.fillMockUser();
-    this.ctx.body = responseGener(res, "Fill Mock User Successfully");
+    this.ctx.body = responseGener(res, 'Fill Mock User Successfully');
   }
 }

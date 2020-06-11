@@ -1,7 +1,7 @@
-import chalk from "chalk";
+import chalk from 'chalk';
 
 export const log = (message: string, color?: string): void => {
-  const printColor = color || "green";
+  const printColor = color || 'green';
   console.log(chalk[printColor](message));
 };
 
@@ -13,4 +13,4 @@ export const responseGener = (data: any, message: string, success = true) => {
   };
 };
 
-export * from "./init";
+export * from './init';

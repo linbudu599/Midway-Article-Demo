@@ -1,4 +1,4 @@
-import { InsertResult, DeleteResult } from "typeorm";
+import { InsertResult, DeleteResult } from 'typeorm';
 
 export interface IUserService {
   getAllUsers(): Promise<IUser[] | null>;

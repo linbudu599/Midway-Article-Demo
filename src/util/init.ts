@@ -1,5 +1,5 @@
-import { IUser } from "../interface/user";
-import { IGame } from "../interface/game";
+import { IUser } from '../interface/user';
+import { IGame } from '../interface/game';
 
 export const mockUserData = (length: number): IUser[] => {
   const arr = Array(length);
@@ -19,9 +19,9 @@ export const mockGameData = (length: number): IGame[] => {
 
   for (let i = 0; i < length; i++) {
     arr.push({
-      name: "Subnatica",
-      saleYear: "2019",
-      price: "99",
+      name: 'Subnatica',
+      saleYear: '2019',
+      price: '99',
       favorCount: 0,
     });
   }

@@ -1,9 +1,9 @@
-import "reflect-metadata";
-import { createConnection, useContainer } from "typeorm";
-import { Application } from "midway";
-import { Container } from "typedi";
-import { User, Game } from "./entity";
-import { mockUserData, mockGameData, log } from "./util";
+import 'reflect-metadata';
+import { createConnection, useContainer } from 'typeorm';
+import { Application } from 'midway';
+import { Container } from 'typedi';
+import { User, Game } from './entity';
+import { mockUserData, mockGameData, log } from './util';
 
 // 使用TypeDI提供的容器
 useContainer(Container);
@@ -16,18 +16,18 @@ class AppBootHook {
   }
 
   async willReady() {
-    log("=== TypeORM Starting ===");
+    log('=== TypeORM Starting ===');
 
     createConnection()
       .then(async (connection) => {
-        log("=== Database Connection Established ===");
+        log('=== Database Connection Established ===');
         await connection.manager.insert(User, mockUserData(5));
         await connection.manager.insert(Game, mockGameData(5));
-        log("=== Initial [User & Game] Info Injected Successfully ===");
+        log('=== Initial [User & Game] Info Injected Successfully ===');
       })
       .catch((error) => {
-        log(error, "red");
-        log("Oops! An Error Occured", "red");
+        log(error, 'red');
+        log('Oops! An Error Occured', 'red');
       });
   }
 }

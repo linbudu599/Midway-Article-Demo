@@ -1,4 +1,4 @@
-import { InsertResult } from "typeorm";
+import { InsertResult } from 'typeorm';
 
 export interface IGame {
   gid: string;
@@ -12,7 +12,7 @@ export interface IGame {
 
 export interface IGameService {
    getAllGames(): Promise<IGame[] | null>;
-  getGameByGid(gdi: string): Promise<IGame>;
-  likeGame(gid: string): Promise<InsertResult>;
-  dislikeGame(gid: string): Promise<InsertResult>;
+   getGameByGid(gdi: string): Promise<IGame>;
+   likeGame(gid: string): Promise<InsertResult>;
+   dislikeGame(gid: string): Promise<InsertResult>;
 }
