@@ -6,6 +6,7 @@
   "dependencies": {
     "@types/chalk": "^2.2.0",
     "chalk": "^4.0.0",
+    "codecov": "^3.7.0",
     "egg-scripts": "^2.10.0",
     "midway": "^1.0.0",
     "reflect-metadata": "^0.1.13",
