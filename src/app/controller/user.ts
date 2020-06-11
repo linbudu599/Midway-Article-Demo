@@ -1,5 +1,5 @@
 import { Context, controller, get, inject, provide, post, del } from "midway";
-import { IUserService } from "../../interface/user";
+import { IUserService } from "../../interface";
 import { responseGener } from "../../util";
 
 @provide()

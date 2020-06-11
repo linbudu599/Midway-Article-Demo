@@ -1,8 +1,8 @@
 import { provide } from "midway";
 import { Connection, getConnection, InsertResult, DeleteResult } from "typeorm";
-import { User } from "../entity/user";
-import { mockGameData } from "../util/init";
-import { IGameService, IGame } from "../interface/game";
+import { Game } from "../entity";
+import { mockGameData } from "../util";
+import { IGameService, IGame } from "../interface";
 
 @provide("gameService")
 export class GameService implements IGameService {
@@ -12,8 +12,9 @@ export class GameService implements IGameService {
     // @InjectRepository(User) private readonly userRepository: Repository<User>
     this.connection = getConnection();
   }
-  getAllGames(): Promise<IGame[]> {
-    throw new Error("Method not implemented.");
+  async getAllGames(): Promise<IGame[]> {
+    const result = await this.connection.manager.find(Game);
+    return result;
   }
   getGameByGid(gdi: string): Promise<IGame> {
     throw new Error("Method not implemented.");

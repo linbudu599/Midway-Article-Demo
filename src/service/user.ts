@@ -1,8 +1,8 @@
 import { provide } from "midway";
 import { Connection, getConnection, InsertResult, DeleteResult } from "typeorm";
-import { User } from "../entity/user";
-import { mockUserData } from "../util/init";
-import { IUserService, IUser } from "../interface/user";
+import { User } from "../entity";
+import { mockUserData } from "../util";
+import { IUserService, IUser } from "../interface";
 
 @provide("userService")
 export class UserService implements IUserService {
