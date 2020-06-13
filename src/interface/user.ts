@@ -1,4 +1,5 @@
-import { InsertResult, DeleteResult } from 'typeorm';
+import { InsertResult, DeleteResult } from "typeorm";
+import { IGame } from ".";
 
 export interface IUserService {
   getAllUsers(): Promise<IUser[] | null>;
@@ -6,6 +7,7 @@ export interface IUserService {
   // FIXME: remove unknown
   findUserByUid(uid: string): Promise<unknown>;
   deleteUser(uid: string): Promise<DeleteResult>;
+  userLikedGames(uid: string): Promise<IGame[]>;
   fillMockUser(): Promise<InsertResult>;
 }
 

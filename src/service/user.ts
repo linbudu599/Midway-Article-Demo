@@ -1,8 +1,8 @@
 import { provide } from "midway";
 import { Connection, getConnection, InsertResult, DeleteResult } from "typeorm";
-import { User } from "../entity";
+import { User, Flow, Game } from "../entity";
 import { mockUserData, log } from "../util";
-import { IUserService, IUser } from "../interface";
+import { IUserService, IUser, IGame } from "../interface";
 
 @provide("userService")
 export class UserService implements IUserService {
@@ -41,5 +41,18 @@ export class UserService implements IUserService {
     log("=== fillMockUser Service Invoked ===");
     const result = await this.connection.manager.insert(User, mockUserData(5));
     return result;
+  }
+
+  async userLikedGames(uid: string): Promise<IGame[]> {
+    log("=== userLikedGames Service Invoked ===");
+    const result = await this.connection.manager.find(Flow, { uid });
+    console.log(result);
+    const gids = [];
+    result.forEach((item) => {
+      gids.push(item.gid);
+    });
+    console.log(gids);
+    const games = await this.connection.manager.findByIds(Game, gids);
+    return games;
   }
 }

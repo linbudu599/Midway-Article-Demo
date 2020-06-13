@@ -3,6 +3,7 @@
   "database": "./test.db",
   "synchronize": true,
   "dropSchema": true,
-  "logging": "advanced-console",
+  "logging": true,
+  "logger": "advanced-console",
   "entities": ["src/entity/**/*.ts"]
 }
