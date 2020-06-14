@@ -34,6 +34,7 @@ export class UserController {
   }
 
   @del("/uid/:uid")
+  // @del("/uid/:uid", { middleware: ["delLogger "] })
   async deleteUser(): Promise<void> {
     const {
       params: { uid },

@@ -1,4 +1,4 @@
-import { Context } from "midway";
+import { Middleware } from "midway";
 import { log } from "../../util";
 
 interface ICORSOptions {
@@ -6,8 +6,8 @@ interface ICORSOptions {
   origin: string[];
 }
 
-const cors = ({ methods, origin }: ICORSOptions) => {
-  return async (ctx: Context, next: () => Promise<any>) => {
+const cors = ({ methods, origin }: ICORSOptions): Middleware => {
+  return async (ctx, next) => {
     log("=== CORS Middlware Invoked ===");
     log(`Allowed Methods: ${methods}`);
     log(`Allowed Origin: ${origin}`);

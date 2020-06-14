@@ -23,10 +23,10 @@ export default (appInfo: EggAppInfo) => {
     auth: true,
   };
 
-  config.customLoader = {
+  config.customLogger = {
     delLogger: {
-      // level: "INFO",
-      // file: path.join(appInfo.root, "logs/del.log"),
+      level: "INFO",
+      file: path.join(appInfo.root, "logs/del.log"),
     },
   };
 

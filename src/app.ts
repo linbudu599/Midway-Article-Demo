@@ -1,5 +1,10 @@
 import "reflect-metadata";
-import { createConnection, useContainer } from "typeorm";
+import {
+  createConnection,
+  useContainer,
+  getConnection,
+  Connection,
+} from "typeorm";
 import { Application } from "midway";
 import { Container } from "typedi";
 import { User, Game, Flow } from "./entity";
@@ -11,6 +16,8 @@ useContainer(Container);
 // App 启动前钩子
 class AppBootHook {
   app: Application;
+  connection: Connection;
+
   constructor(app: Application) {
     this.app = app;
   }
@@ -34,6 +41,13 @@ class AppBootHook {
         log(error, "red");
         log("Oops! An Error Occured", "red");
       });
+  }
+
+  async beforeClose() {
+    this.connection = getConnection();
+    this.connection.synchronize();
+    this.connection.dropDatabase();
+    this.connection.close();
   }
 }
 
