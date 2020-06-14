@@ -1,17 +1,34 @@
-import { EggAppConfig, EggAppInfo, PowerPartial } from 'midway';
+import { EggAppConfig, EggAppInfo, PowerPartial } from "midway";
+import path from "path";
 
 export type DefaultConfig = PowerPartial<EggAppConfig>;
 
 export default (appInfo: EggAppInfo) => {
   const config = {} as DefaultConfig;
 
-  // use for cookie sign key, should change to your own and keep security
-  config.keys = appInfo.name + '_{{keys}}';
+  config.keys = appInfo.name + "_{{keys}}";
 
-  // add your config here
-  // config.middleware = ["log"];
+  config.middleware = ["cors"];
+
   config.security = {
     csrf: false,
   };
+
+  config.cors = {
+    method: "*",
+    origin: "*",
+  };
+
+  config.delRouter = {
+    auth: true,
+  };
+
+  config.customLoader = {
+    delLogger: {
+      // level: "INFO",
+      // file: path.join(appInfo.root, "logs/del.log"),
+    },
+  };
+
   return config;
 };
