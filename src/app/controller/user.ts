@@ -33,8 +33,7 @@ export class UserController {
     this.ctx.body = responseGener(res, "Find User By UID Successfully");
   }
 
-  @del("/uid/:uid")
-  // @del("/uid/:uid", { middleware: ["delLogger "] })
+  @del("/uid/:uid", { middleware: ["delMw"] })
   async deleteUser(): Promise<void> {
     const {
       params: { uid },

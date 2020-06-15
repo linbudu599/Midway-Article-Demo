@@ -9,8 +9,8 @@ import {
 
 import { log } from "../../util";
 
-@provide("delLogger")
-export class DelRouterMiddleware implements WebMiddleware {
+@provide()
+export class DelMw implements WebMiddleware {
   @config("delRouter")
   delConfig: EggAppConfig;
 
