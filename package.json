@@ -1,7 +1,7 @@
 {
-  "name": "my_first_midway_project",
+  "name": "Powerful-Midway-Demo",
   "version": "1.0.0",
-  "description": "{{description}}",
+  "description": "",
   "private": true,
   "dependencies": {
     "@types/chalk": "^2.2.0",
