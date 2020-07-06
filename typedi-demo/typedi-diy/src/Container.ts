@@ -14,10 +14,6 @@ export class Container {
     let container = this.instances.find(
       (instance) => instance.id === instanceId
     );
-    if (!container) {
-      container = new ContainerInstance(instanceId);
-      this.instances.push(container);
-    }
 
     return container;
   }
