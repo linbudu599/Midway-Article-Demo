@@ -1,4 +1,4 @@
-import { InsertResult } from "typeorm";
+import { InsertResult } from 'typeorm';
 
 export interface IGame {
   gid: string;

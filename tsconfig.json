@@ -9,16 +9,12 @@
     "emitDecoratorMetadata": true,
     "inlineSourceMap": true,
     "noImplicitThis": true,
-    // "noUnusedLocals": true,
+    "noUnusedLocals": false,
     "stripInternal": true,
     "pretty": true,
     "types": ["jest"],
     "declaration": true,
     "outDir": "dist"
   },
-  "exclude": [
-    "dist",
-    "node_modules",
-    "test"
-  ]
+  "exclude": ["dist", "node_modules", "test", "typedi-demo"]
 }

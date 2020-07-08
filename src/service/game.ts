@@ -1,10 +1,10 @@
-import { provide } from "midway";
-import { Connection, getConnection, InsertResult, DeleteResult } from "typeorm";
-import { Game, Flow } from "../entity";
-import { log } from "../util";
-import { IGameService, IGame, IFlow } from "../interface";
+import { provide } from 'midway';
+import { Connection, getConnection, InsertResult, DeleteResult } from 'typeorm';
+import { Game, Flow } from '../entity';
+import { log } from '../util';
+import { IGameService, IGame, IFlow } from '../interface';
 
-@provide("gameService")
+@provide('gameService')
 export class GameService implements IGameService {
   connection: Connection;
 
@@ -27,9 +27,9 @@ export class GameService implements IGameService {
       gid,
       isLike: true,
     });
-    log("FavorCount Increment Transaction Invoked");
+    log('FavorCount Increment Transaction Invoked');
     this.connection.transaction(async (transactionEntityManager) => {
-      await transactionEntityManager.increment(Game, { gid }, "favorCount", 1);
+      await transactionEntityManager.increment(Game, { gid }, 'favorCount', 1);
     });
     return result;
   }
@@ -39,9 +39,9 @@ export class GameService implements IGameService {
       gid,
       isLike: false,
     });
-    log("FavorCount Decrement Transaction Invoked");
+    log('FavorCount Decrement Transaction Invoked');
     this.connection.transaction(async (transactionEntityManager) => {
-      await transactionEntityManager.decrement(Game, { gid }, "favorCount", 1);
+      await transactionEntityManager.decrement(Game, { gid }, 'favorCount', 1);
     });
     return result;
   }

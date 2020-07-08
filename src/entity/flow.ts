@@ -1,5 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
-import { IFlow } from "../interface";
+import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { IFlow } from '../interface';
 
 @Entity()
 export class Flow implements IFlow {

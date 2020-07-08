@@ -1,5 +1,5 @@
-import { InsertResult, DeleteResult } from "typeorm";
-import { IGame } from ".";
+import { InsertResult, DeleteResult } from 'typeorm';
+import { IGame } from '.';
 
 export interface IUserService {
   getAllUsers(): Promise<IUser[] | null>;

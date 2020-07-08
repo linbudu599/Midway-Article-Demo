@@ -5,13 +5,13 @@ import {
   config,
   inject,
   EggAppConfig,
-} from "midway";
+} from 'midway';
 
-import { log } from "../../util";
+import { log } from '../../util';
 
 @provide()
 export class DelMw implements WebMiddleware {
-  @config("delRouter")
+  @config('delRouter')
   delConfig: EggAppConfig;
 
   resolve(): Middleware {
@@ -23,7 +23,7 @@ export class DelMw implements WebMiddleware {
       );
       await next();
 
-      log("=== DEL Router Mw End");
+      log('=== DEL Router Mw End');
     };
   }
 }

@@ -1,10 +1,10 @@
-import { provide } from "midway";
-import { Connection, getConnection, InsertResult, DeleteResult } from "typeorm";
-import { User, Flow, Game } from "../entity";
-import { mockUserData, log } from "../util";
-import { IUserService, IUser, IGame } from "../interface";
+import { provide } from 'midway';
+import { Connection, getConnection, InsertResult, DeleteResult } from 'typeorm';
+import { User, Flow, Game } from '../entity';
+import { mockUserData, log } from '../util';
+import { IUserService, IUser, IGame } from '../interface';
 
-@provide("userService")
+@provide('userService')
 export class UserService implements IUserService {
   connection: Connection;
 
@@ -14,37 +14,37 @@ export class UserService implements IUserService {
   }
 
   async getAllUsers(): Promise<IUser[] | null> {
-    log("=== getAllUsers Service Invoked ===");
+    log('=== getAllUsers Service Invoked ===');
     const result = await this.connection.manager.find(User);
     return result;
   }
 
   async createUser(user: IUser): Promise<InsertResult> {
-    log("=== createUser Service Invoked ===");
+    log('=== createUser Service Invoked ===');
     const result = await this.connection.manager.insert(User, { ...user });
     return result;
   }
 
   async findUserByUid(uid: string): Promise<unknown> {
-    log("=== findUserByUid Service Invoked ===");
+    log('=== findUserByUid Service Invoked ===');
     const result = await this.connection.manager.findOne(User, uid);
     return result;
   }
 
   async deleteUser(uid: string): Promise<DeleteResult> {
-    log("=== deleteUser Service Invoked ===");
+    log('=== deleteUser Service Invoked ===');
     const result = await this.connection.manager.delete(User, uid);
     return result;
   }
 
   async fillMockUser(): Promise<InsertResult> {
-    log("=== fillMockUser Service Invoked ===");
+    log('=== fillMockUser Service Invoked ===');
     const result = await this.connection.manager.insert(User, mockUserData(5));
     return result;
   }
 
   async userLikedGames(uid: string): Promise<IGame[]> {
-    log("=== userLikedGames Service Invoked ===");
+    log('=== userLikedGames Service Invoked ===');
     const result = await this.connection.manager.find(Flow, { uid });
     console.log(result);
     const gids = [];
