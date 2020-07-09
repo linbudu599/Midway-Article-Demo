@@ -1,7 +1,7 @@
 import { Container } from "../Container";
 
 export function Service(): any {
-  return function (target: Function) {
+  return function (target: Function): void {
     const service: any = {
       type: target,
     };

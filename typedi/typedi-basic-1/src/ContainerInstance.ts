@@ -16,10 +16,10 @@ export class ContainerInstance {
     return this.getServiceValue(identifier, service);
   }
 
-  set(identifierOrServiceMetadata, value?: any): this {
-    if (typeof identifierOrServiceMetadata === "string") {
-      return this.set({ id: identifierOrServiceMetadata, value: value });
-    }
+  set(service, value?: any): this {
+    const newService = service;
+    this.services.push(newService);
+    return this;
   }
 
   private findService(identifier) {
