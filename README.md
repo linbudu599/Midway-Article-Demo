@@ -8,6 +8,10 @@
 
 > Midway 文章 Demo
 
+## Start
+
+- 请确保你的电脑上安装了`SQLite3`
+
 ## TODO
 
 - [x] 基本User表及CRUD
@@ -38,3 +42,21 @@
 ## Notice!
 
 在一部分配置不够(比如我的)电脑上, 运行单元测试可能会报错`Async Callback Not Invoked ...`, 这是因为Midway在启动时会**扫描整个目录**去收集`@provide()`的数据, 一旦时间超过**3000ms(Jest默认的异步超时时间)**, 就会报错. 解决方式是项目下的`jest.setup.js`文件, 来手动调整超时时间.
+
+## 接口文档
+
+### `/user`
+
+- **GET** `/user/all` 获取所有用户(初始化会填入mock用户数据)
+- **POST** `/user/create` 创建用户(使用body携带的数据,uid自增)
+- **GET** `/user/uid/:uid` 根据uid获取用户
+- **DELETE** `/user/uid/:uid` 根据uid删除用户
+- **GET** `/user/fillMockData` 新增mock用用户数据
+- **GET** `/user/like/:uid` 获取用户喜欢的游戏
+
+### `/game`
+
+- **GET** `/game/all` 获取所有游戏(初始化填入mock游戏数据)
+- **GET** `/game/gid/:gid` 根据gid获取游戏信息
+- **POST** `/game/like` `body{gid, uid}` uid用户点赞gid游戏
+- **POST** `/game/unlike` `body{gid, uid}` uid用户取消点赞gid游戏
