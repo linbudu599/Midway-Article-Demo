@@ -8,7 +8,7 @@ export default (appInfo: EggAppInfo) => {
 
   config.keys = appInfo.name + '_{{keys}}';
 
-  config.middleware = ['cors'];
+  config.middleware = ['cors', 'logger'];
 
   config.security = {
     csrf: false,
