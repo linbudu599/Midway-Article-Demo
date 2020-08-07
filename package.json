@@ -20,7 +20,7 @@
     "@types/jest": "^25.2.3",
     "@types/koa-logger": "^3.1.1",
     "@types/node": "^10.5.5",
-    "cross-env": "^6.0.0",
+    "cross-env": "^7.0.2",
     "egg-ci": "^1.8.0",
     "jest": "^26.0.1",
     "midway-bin": "1",
