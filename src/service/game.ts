@@ -1,17 +1,16 @@
 import { provide } from 'midway';
-import { Connection, getConnection, InsertResult, DeleteResult } from 'typeorm';
+import { InsertResult } from 'typeorm';
 import { Game, Flow } from '../entity';
 import { log } from '../util';
-import { IGameService, IGame, IFlow } from '../interface';
+import { IGameService, IGame } from '../interface';
+import BaseService from './base';
 
 @provide('gameService')
-export class GameService implements IGameService {
-  connection: Connection;
-
+export class GameService extends BaseService implements IGameService {
   constructor() {
-    // @InjectRepository(User) private readonly userRepository: Repository<User>
-    this.connection = getConnection();
+    super();
   }
+
   async getAllGames(): Promise<IGame[]> {
     const result = await this.connection.manager.find(Game);
     return result;

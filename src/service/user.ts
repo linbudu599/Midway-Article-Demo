@@ -1,16 +1,14 @@
 import { provide } from 'midway';
-import { Connection, getConnection, InsertResult, DeleteResult } from 'typeorm';
+import { InsertResult, DeleteResult } from 'typeorm';
 import { User, Flow, Game } from '../entity';
 import { mockUserData, log } from '../util';
 import { IUserService, IUser, IGame } from '../interface';
+import BaseService from './base';
 
 @provide('userService')
-export class UserService implements IUserService {
-  connection: Connection;
-
+export class UserService extends BaseService implements IUserService {
   constructor() {
-    // @InjectRepository(User) private readonly userRepository: Repository<User>
-    this.connection = getConnection();
+    super();
   }
 
   async getAllUsers(): Promise<IUser[] | null> {

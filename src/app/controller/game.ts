@@ -1,4 +1,4 @@
-import { Context, controller, get, inject, provide, post, del } from 'midway';
+import { Context, controller, get, inject, provide, post } from 'midway';
 import { IGameService } from '../../interface';
 import { responseGener, log } from '../../util';
 

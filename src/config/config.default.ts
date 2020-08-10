@@ -15,7 +15,7 @@ export default (appInfo: EggAppInfo) => {
   };
 
   config.cors = {
-    method: '*',
+    methods: '*',
     origin: '*',
   };
 
