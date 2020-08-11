@@ -1,15 +1,13 @@
-import { provide } from 'midway';
-import { InsertResult } from 'typeorm';
-import { Game, Flow } from '../entity';
-import { log } from '../util';
-import { IGameService, IGame } from '../interface';
-import BaseService from './base';
+import { provide, inject } from "midway";
+import { InsertResult, Connection } from "typeorm";
+import { Game, Flow } from "../entity";
+import { log } from "../util";
+import { IGameService, IGame } from "../interface";
 
-@provide('gameService')
-export class GameService extends BaseService implements IGameService {
-  constructor() {
-    super();
-  }
+@provide("gameService")
+export class GameService implements IGameService {
+  @inject("connection")
+  connection: Connection;
 
   async getAllGames(): Promise<IGame[]> {
     const result = await this.connection.manager.find(Game);
@@ -26,9 +24,9 @@ export class GameService extends BaseService implements IGameService {
       gid,
       isLike: true,
     });
-    log('FavorCount Increment Transaction Invoked');
+    log("FavorCount Increment Transaction Invoked");
     this.connection.transaction(async (transactionEntityManager) => {
-      await transactionEntityManager.increment(Game, { gid }, 'favorCount', 1);
+      await transactionEntityManager.increment(Game, { gid }, "favorCount", 1);
     });
     return result;
   }
@@ -38,9 +36,9 @@ export class GameService extends BaseService implements IGameService {
       gid,
       isLike: false,
     });
-    log('FavorCount Decrement Transaction Invoked');
+    log("FavorCount Decrement Transaction Invoked");
     this.connection.transaction(async (transactionEntityManager) => {
-      await transactionEntityManager.decrement(Game, { gid }, 'favorCount', 1);
+      await transactionEntityManager.decrement(Game, { gid }, "favorCount", 1);
     });
     return result;
   }

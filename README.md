@@ -14,10 +14,11 @@
 
 ## TODO
 
-- [x] 基本User表及CRUD
-- [x] **User** & **Game** & **Flow** 表CRUD, 联查 & 事务
+- [x] 基本 User 表及 CRUD
+- [x] **User** & **Game** & **Flow** 表 CRUD, 联查 & 事务
 - [x] **全局** 及 **路由** 中间件
-- [ ] `controller` & `service` 单元测试
+- [x] 日志对象注入
+- [ ] ~~`controller` & `service` 单元测试~~, Mac 和 Windows 上表现有一定差异,暂时跳过.
 - [ ] 基于 `GitHub Actions` / `Travis CI` 部署
 
 ## 目录结构
@@ -41,22 +42,22 @@
 
 ## Notice!
 
-在一部分配置不够(比如我的)电脑上, 运行单元测试可能会报错`Async Callback Not Invoked ...`, 这是因为Midway在启动时会**扫描整个目录**去收集`@provide()`的数据, 一旦时间超过**3000ms(Jest默认的异步超时时间)**, 就会报错. 解决方式是项目下的`jest.setup.js`文件, 来手动调整超时时间.
+在一部分配置不够(比如我的)电脑上, 运行单元测试可能会报错`Async Callback Not Invoked ...`, 这是因为 Midway 在启动时会**扫描整个目录**去收集`@provide()`的数据, 一旦时间超过**3000ms(Jest 默认的异步超时时间)**, 就会报错. 解决方式是项目下的`jest.setup.js`文件, 来手动调整超时时间.
 
 ## 接口文档
 
 ### `/user`
 
-- **GET** `/user/all` 获取所有用户(初始化会填入mock用户数据)
-- **POST** `/user/create` 创建用户(使用body携带的数据,uid自增)
-- **GET** `/user/uid/:uid` 根据uid获取用户
-- **DELETE** `/user/uid/:uid` 根据uid删除用户
-- **GET** `/user/fillMockData` 新增mock用用户数据
+- **GET** `/user/all` 获取所有用户(初始化会填入 mock 用户数据)
+- **POST** `/user/create` 创建用户(使用 body 携带的数据,uid 自增)
+- **GET** `/user/uid/:uid` 根据 uid 获取用户
+- **DELETE** `/user/uid/:uid` 根据 uid 删除用户
+- **GET** `/user/fillMockData` 新增 mock 用用户数据
 - **GET** `/user/like/:uid` 获取用户喜欢的游戏
 
 ### `/game`
 
-- **GET** `/game/all` 获取所有游戏(初始化填入mock游戏数据)
-- **GET** `/game/gid/:gid` 根据gid获取游戏信息
-- **POST** `/game/like` `body{gid, uid}` uid用户点赞gid游戏
-- **POST** `/game/unlike` `body{gid, uid}` uid用户取消点赞gid游戏
+- **GET** `/game/all` 获取所有游戏(初始化填入 mock 游戏数据)
+- **GET** `/game/gid/:gid` 根据 gid 获取游戏信息
+- **POST** `/game/like` `body{gid, uid}` uid 用户点赞 gid 游戏
+- **POST** `/game/unlike` `body{gid, uid}` uid 用户取消点赞 gid 游戏
